@@ -1,4 +1,9 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
+from PIL import Image
+import numpy as np
+import pandas as pd
+import io
 from streamlit_webrtc import webrtc_streamer
 import av
 
@@ -10,12 +15,16 @@ def video_frame_callback(frame):
     return av.VideoFrame.from_ndarray(flipped, format="bgr24")
 
 with st.sidebar:
-    choose = st.radio(
-        "안면 대칭 is YOU",
-        ["홈", "진단하기", "마이페이지", "교정운동하기"],
-        index=0,
-        key="main_menu",
-    )
+    choose = option_menu("안면 대칭 is YOU", ["홈", "진단하기", "마이페이지", "교정운동하기"],
+                         icons=['house', 'camera fill', 'kanban', 'emoji-smile'],
+                         menu_icon="app-indicator", default_index=0,
+                         styles={
+                             "container": {"padding": "5!important", "background-color": "#fafafa"},
+                             "icon": {"color": "pink", "font-size": "25px"},
+                             "nav-link": {"font-size": "16px", "text-align": "left", "margin": "0px",
+                                          "—hover-color": "#E142DE"},
+                             "nav-link-selected": {"background-color": "#414AEC"},
+                         })
 
 if choose == "진단하기":
     flip = st.checkbox("Flip")
@@ -25,12 +34,17 @@ if choose == "진단하기":
         video_frame_callback=video_frame_callback
     )
 elif choose == "마이페이지":
-    sub_menu = st.radio(
-        "마이페이지",
-        ["진단결과보기", "개인정보수정"],
-        index=0,
-        key="sub_menu",
-    )
+    sub_menu = option_menu("마이페이지", ["진단결과보기", "개인정보수정"],
+                           icons=['file', 'person'],
+                           menu_icon="app-indicator",
+                           default_index=0,
+                           styles={
+                               "container": {"padding": "5!important", "background-color": "#fafafa"},
+                               "icon": {"color": "pink", "font-size": "25px"},
+                               "nav-link": {"font-size": "16px", "text-align": "left", "margin": "0px",
+                                            "—hover-color": "#E142DE"},
+                               "nav-link-selected": {"background-color": "#414AEC"},
+                           })
 
     if sub_menu == "진단결과보기":
         st.write("진단 결과를 표시하는 부분입니다.")
