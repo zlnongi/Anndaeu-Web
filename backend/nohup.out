@@ -1,0 +1,818 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 616, in connect
+    sock = socket.create_connection(
+  File "/usr/lib/python3.9/socket.py", line 823, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.9/socket.py", line 954, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/VOLUME/backend/flask_server.py", line 110, in <module>
+    db.create_all()
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 884, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 865, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/sql/schema.py", line 4916, in create_all
+    bind._run_ddl_visitor(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3146, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3062, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3234, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3313, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3283, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 2117, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 616, in connect
+    sock = socket.create_connection(
+  File "/usr/lib/python3.9/socket.py", line 823, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.9/socket.py", line 954, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/VOLUME/backend/flask_server.py", line 110, in <module>
+    db.create_all()
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 884, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 865, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/sql/schema.py", line 4916, in create_all
+    bind._run_ddl_visitor(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3146, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3062, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3234, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3313, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3283, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 2117, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 616, in connect
+    sock = socket.create_connection(
+  File "/usr/lib/python3.9/socket.py", line 823, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.9/socket.py", line 954, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/VOLUME/backend/flask_server.py", line 110, in <module>
+    db.create_all()
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 884, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 865, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/sql/schema.py", line 4916, in create_all
+    bind._run_ddl_visitor(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3146, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3062, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3234, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3313, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3283, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 2117, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 616, in connect
+    sock = socket.create_connection(
+  File "/usr/lib/python3.9/socket.py", line 823, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.9/socket.py", line 954, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/VOLUME/backend/flask_server.py", line 110, in <module>
+    db.create_all()
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 884, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 865, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/sql/schema.py", line 4916, in create_all
+    bind._run_ddl_visitor(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3146, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3062, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3234, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3313, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3283, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 2117, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 616, in connect
+    sock = socket.create_connection(
+  File "/usr/lib/python3.9/socket.py", line 823, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.9/socket.py", line 954, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/VOLUME/backend/flask_server.py", line 110, in <module>
+    db.create_all()
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 884, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 865, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/sql/schema.py", line 4916, in create_all
+    bind._run_ddl_visitor(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3146, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3062, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3234, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3313, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3283, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 2117, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 616, in connect
+    sock = socket.create_connection(
+  File "/usr/lib/python3.9/socket.py", line 823, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.9/socket.py", line 954, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/VOLUME/backend/flask_server.py", line 110, in <module>
+    db.create_all()
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 884, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 865, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/sql/schema.py", line 4916, in create_all
+    bind._run_ddl_visitor(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3146, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3062, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3234, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3313, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3283, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 2117, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 616, in connect
+    sock = socket.create_connection(
+  File "/usr/lib/python3.9/socket.py", line 823, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.9/socket.py", line 954, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/VOLUME/backend/flask_server.py", line 110, in <module>
+    db.create_all()
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 884, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/usr/local/lib/python3.9/dist-packages/flask_sqlalchemy/extension.py", line 865, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/sql/schema.py", line 4916, in create_all
+    bind._run_ddl_visitor(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3146, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3062, in begin
+    conn = self.connect(close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3234, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3313, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3283, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 2117, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 352, in __init__
+    self.connect()
+  File "/usr/local/lib/python3.9/dist-packages/pymysql/connections.py", line 668, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '<endpoint>' ([Errno -2] Name or service not known)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+ * Serving Flask app 'flask_server'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:7659
+ * Running on http://172.17.0.9:7659
+Press CTRL+C to quit
+ * Restarting with watchdog (inotify)
+ * Debugger is active!
+ * Debugger PIN: 679-298-069
+172.17.0.1 - - [30/May/2023 04:53:34] "POST /signup HTTP/1.1" 400 -
+172.17.0.1 - - [30/May/2023 04:53:40] "POST /signup HTTP/1.1" 201 -
+172.17.0.1 - - [30/May/2023 04:53:45] "POST /login HTTP/1.1" 200 -
