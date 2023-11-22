@@ -1,0 +1,15 @@
+visualize: 
+    detector_bbox: False 
+    center_bbox: False
+    landmark: True
+    face_frontal_bbox: False
+
+center_ratio: 
+    height: 0.7 
+    width : 0.5
+    
+face_frontal_ratio:
+    width: 0.15
+
+
+
